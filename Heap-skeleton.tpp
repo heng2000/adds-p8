@@ -56,7 +56,17 @@ Heap<T>::Heap(std::vector<T> start_values) {
 
 template <typename T>
 void Heap<T>::insert(T value) {
-   // TO BE IMPLEMENTED
+    numbers.push_back(value);
+    int child_index =numbers.size()-1;
+    int parent_index = (numbers.size()-1)/2;
+    while(numbers[child_index] < numbers[parent_index] && child_index > 0)
+    {
+        T tmp = numbers[child_index];
+        numbers[child_index] = numbers[parent_index];
+        numbers[parent_index] = tmp;
+        child_index = parent_index;
+        parent_index = (child_index - 1) / 2;
+    }
 }
 
 /*******************************/
@@ -65,7 +75,19 @@ void Heap<T>::insert(T value) {
 
 template <typename T>
 void Heap<T>::remove(T value) {
-  // TO BE IMPLEMENTED
+    int index = -1;
+    for(int i=0; i<values.size(); i++)
+    {
+        if (numbers[i] == value)
+        {
+            index = 1;
+            break;
+
+        }
+        numbers[index] = value[values.size()-1];
+        numbers.pop_back();
+        heapify(index);
+    }
 }
 
 /*******************************/
@@ -74,7 +96,7 @@ void Heap<T>::remove(T value) {
 
 template <typename T>
 T Heap<T>::getMin() {
-  // TO BE IMPLEMENTED
+    return numbers[0];
 }
 
 /*******************************/
