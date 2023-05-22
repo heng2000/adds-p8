@@ -43,9 +43,9 @@ Heap<T>::Heap(std::vector<T> start_values) {
   // starting from last non-leaf node (last parent), heapify each
   // of the parents
   int num = floor((values.size()-1) / 2);
-  for (int pi = num; pi >= 0;
-       pi--) {
-    heapify(pi);
+  for (int nump = num; nump >= 0;
+       nump--) {
+    heapify(nump);
   }
 }
 
@@ -58,7 +58,7 @@ void Heap<T>::insert(T value) {
     values.push_back(value);
     int ci =values.size()-1;
     int pi = (values.size()-1)/2;
-    while(values[ci] < values[pi] && child_index > 0)
+    while(values[ci] < values[pi] && ci > 0)
     {
         T tmp = values.at(ci);
         values.at(ci) = values.at(pi);
