@@ -2,8 +2,8 @@
  * @Author: yuheng li a1793138
  * @Date: 2023-05-22 19:06:30
  * @LastEditors: yuheng 
- * @LastEditTime: 2023-05-22 22:15:12
- * @FilePath: \week10\Heap-skeleton.cpp
+ * @LastEditTime: 2023-05-22 22:25:38
+ * @FilePath: \adds-p8\Heap-skeleton.cpp
  * @Description: 
  * 
  * Copyright (c) ${2023} by ${yuheng li}, All Rights Reserved. 
@@ -23,8 +23,8 @@ class Heap
     public:
         Heap( );
         Heap(std::vector<T>);
-        void insert(T);
-        void remove(T):
+        void insert(T value);
+        void remove(T value):
         T getMin();
 };
 
@@ -40,7 +40,7 @@ Heap<T>::Heap(std::vector<T> start_values)
     int initial_parent_index = floor(numbers.size() / 2) - 1;
     for(int parent_index = initial_parent_index; parent_index >= 0;parent_index--)
     {
-        heapify(parent index);
+        heapify(parent_index);
     }
 }
 template <typename T>
