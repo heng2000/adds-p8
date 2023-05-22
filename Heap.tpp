@@ -1,6 +1,5 @@
 #ifndef HEAP_H
 #define HEAP_H
-
 #include <vector>
 #include <cmath> // for floor()
 
@@ -61,9 +60,9 @@ void Heap<T>::insert(T value) {
     int parent_index = (values.size()-1)/2;
     while(values[child_index] < values[parent_index] && child_index > 0)
     {
-        T tmp = values[child_index];
-        values[child_index] = values[parent_index];
-        values[parent_index] = tmp;
+        T tmp = values.at(child_index);
+        values.at(child_index) = values.at(parent_index);
+        values.at(parent_index) = temp;
         child_index = parent_index;
         parent_index = (child_index - 1) / 2;
     }
@@ -78,14 +77,14 @@ void Heap<T>::remove(T value) {
     int index = -1;
     for(int i=0; i<values.size(); i++)
     {
-        if (values[i] == value)
+        if (values.at(i) == value)
         {
-            index = 1;
+            index = i;
             break;
 
         }
-        values[index] = value[values.size()-1];
-        values.pop_back();
+    values.at(index) = values[values.size() - 1];
+    values.pop_back();
         heapify(index);
     }
 }
