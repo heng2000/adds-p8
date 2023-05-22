@@ -83,10 +83,13 @@ void Heap<T>::remove(T value) {
             break;
 
         }
+    }
+    if (index == -1) {
+        return;
+    }
     values.at(index) = values[values.size() - 1];
     values.pop_back();
-        heapify(index);
-    }
+    heapify(index);
 }
 
 /*******************************/
