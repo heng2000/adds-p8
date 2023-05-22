@@ -62,7 +62,7 @@ void Heap<T>::insert(T value) {
     {
         T tmp = values.at(child_index);
         values.at(child_index) = values.at(parent_index);
-        values.at(parent_index) = temp;
+        values.at(parent_index) = tmp;
         child_index = parent_index;
         parent_index = (child_index - 1) / 2;
     }
