@@ -42,10 +42,10 @@ Heap<T>::Heap(std::vector<T> start_values) {
 
   // starting from last non-leaf node (last parent), heapify each
   // of the parents
-  int initial_parent_index = floor((values.size()-1) / 2);
-  for (int parent_index = initial_parent_index; parent_index >= 0;
-       parent_index--) {
-    heapify(parent_index);
+  int num = floor((values.size()-1) / 2);
+  for (int pi = num; pi >= 0;
+       pi--) {
+    heapify(pi);
   }
 }
 
@@ -56,15 +56,15 @@ Heap<T>::Heap(std::vector<T> start_values) {
 template <typename T>
 void Heap<T>::insert(T value) {
     values.push_back(value);
-    int child_index =values.size()-1;
-    int parent_index = (values.size()-1)/2;
-    while(values[child_index] < values[parent_index] && child_index > 0)
+    int ci =values.size()-1;
+    int pi = (values.size()-1)/2;
+    while(values[ci] < values[pi] && child_index > 0)
     {
-        T tmp = values.at(child_index);
-        values.at(child_index) = values.at(parent_index);
-        values.at(parent_index) = tmp;
-        child_index = parent_index;
-        parent_index = (child_index - 1) / 2;
+        T tmp = values.at(ci);
+        values.at(ci) = values.at(pi);
+        values.at(pi) = tmp;
+        ci = pi;
+        pi = (ci - 1) / 2;
     }
 }
 
